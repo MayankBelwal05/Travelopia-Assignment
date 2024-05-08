@@ -19,6 +19,13 @@ const AdminLogin = () => {
     e.preventDefault();
   
     if (formData.email === 'admin@gmail.com' && formData.password === 'admin123') {
+      const userData = {
+        user:"Admin",
+        token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjNiZGQ3NmVhZmI5Nzk5ZmQ2OWRkOGMiLCJhdXRob3JzIjoiTWF5YW5rIiwiaWF0IjoxNzE1MTk5MzcxfQ.wNT117Jge_-IxeI0HaBIj4z0I42CG5MGThS12RYyhdA"
+      }
+      localStorage.setItem('token', userData.token);
+      localStorage.setItem('user', JSON.stringify({ name: userData.user }));
+
       setTimeout(()=>{
         navigate('/admindashboard');
       },1000)

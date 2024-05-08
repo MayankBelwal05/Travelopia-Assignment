@@ -13,7 +13,7 @@ const AdminDashboard = () => {
   React.useEffect(() => {
     const fetchTrips = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/trips');
+        const response = await axios.get('https://travelopia-assignment.onrender.com/api/trips');
         console.log(response.data);
        
         const tripsWithIds = response.data.map((trip, index) => ({
