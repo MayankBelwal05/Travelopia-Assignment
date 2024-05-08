@@ -88,8 +88,31 @@ function DrawerAppBar(props) {
             </Link>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <Button component={Link} to="/login" sx={{ color: '#fff', textDecoration: 'none', marginRight: '10px' }}>Login/SignUp</Button>
-            <Button component={Link} to="/adminlogin" sx={{ color: '#fff', textDecoration: 'none' }}>Admin Login</Button>
+          <Button
+  component={Link}
+  to="/login"
+  sx={{
+    color: '#fff',
+    textDecoration: 'none',
+    marginRight: '10px',
+    border: '1px solid #fff', 
+    borderRadius: '5px', 
+  }}
+>
+  Login/SignUp
+</Button>
+<Button
+  component={Link}
+  to="/adminlogin"
+  sx={{
+    color: '#fff',
+    textDecoration: 'none',
+    border: '1px solid #fff', 
+    borderRadius: '5px', 
+  }}
+>
+  Admin Login
+</Button>
           </Box>
         </Toolbar>
       </AppBar>
