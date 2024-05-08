@@ -6,8 +6,11 @@ const auth = async (req, res, next) => {
     const decoded = jwt.verify(token, "masai");
     if (decoded) {
 
-      req.body.userId = decoded.userId;
-      req.body.authors = decoded.authors;
+      req.id = decoded.userId;
+      // req.body.authors = decoded.authors;
+
+      // console.log(req.body.userId)
+      console.log(req.id)
       next();
     } else {
       res.send({ msg: "you are not authorized " });

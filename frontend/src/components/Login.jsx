@@ -25,21 +25,25 @@ const Login = () => {
         },
         body: JSON.stringify(formData),
       });
+
       if (!response.ok) {
         throw new Error('Login failed');
       }
       const userData = await response.json();
       console.log(userData); 
+      localStorage.setItem('token', userData.token);
+      localStorage.setItem('user', JSON.stringify({ name: userData.user }));
+
+
       if (userData) {
         alert("login sucessfull")
         navigate("/");
       } else {
         alert("failed login")
       }
-      // Check if user data exists in users collection
+
     } catch (error) {
       console.error('Error logging in:', error);
-      alert('Login failed');
     }
   };
 

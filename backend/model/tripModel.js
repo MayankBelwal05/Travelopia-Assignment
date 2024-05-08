@@ -5,7 +5,7 @@ const tripSchema = new mongoose.Schema({
     interest: String,
     numberOfTravelers: Number,
     budgetPerPerson: String,
-    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'users' }
   },
   {
     versionKey: false,

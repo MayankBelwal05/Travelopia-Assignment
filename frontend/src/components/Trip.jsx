@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { FaMountain, FaUmbrellaBeach, FaLandmark, FaTree, FaHippo, FaWineBottle } from 'react-icons/fa';
 import background from '../assets/main.webp';
+import axios from 'axios';
 
 const TripForm = () => {
   const [formData, setFormData] = useState({
     location: '',
     interest: '',
     numberOfTravelers: '',
-    budgetPerPerson: '',
+    budgetPerPerson: ''
+    // createdBy: '' 
   });
 
   const handleChange = (e) => {
@@ -17,18 +19,20 @@ const TripForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
-      const response = await fetch('http://localhost:5000/api/trips', {
-        method: 'POST',
+      
+      const token = localStorage.getItem('token');
+      
+      // Send formData to backend API endpoint with token in headers
+      const response = await axios.post(`http://localhost:5000/api/trips`, formData, {
         headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+          Authorization: `Bearer ${token}` 
+        }
       });
-      if (!response.ok) {
-        throw new Error('Failed to create trip');
-      }
-      console.log('Trip created successfully');
+      
+      console.log(response.data);
+      console.log("trip created sucessfully");
     } catch (error) {
       console.error('Error creating trip:', error.message);
     }

@@ -1,15 +1,17 @@
 const express = require("express");
 const { Trip } = require("../model/tripModel");
 const { auth } = require("../middleware/authmiddleware");
-const { access } = require("../middleware/access.middleware");
-const tripRouter = express.Router(); // Fixed missing 'const' declaration
+// const { access } = require("../middleware/access.middleware");
+const tripRouter = express.Router(); 
 tripRouter.use(express.json());
 
 tripRouter.post('/trips',auth,async (req, res) => {
-
+       console.log(req.body);
     try {
-        const userId = req.user.id; 
-      // Create a new trip instance with data from the request body
+        // const userId = req.id; 
+        const userId = req.id.toString();
+        console.log(userId);
+
       const newTrip = new Trip({
         location: req.body.location,
         interest: req.body.interest,
@@ -17,8 +19,8 @@ tripRouter.post('/trips',auth,async (req, res) => {
         budgetPerPerson: req.body.budgetPerPerson,
         createdBy: userId
       });
-  
-      // Save the trip to the database
+  console.log(newTrip);
+     
       await newTrip.save();
   
       res.status(201).json({ message: 'Trip created successfully' });
@@ -32,7 +34,7 @@ tripRouter.post('/trips',auth,async (req, res) => {
   tripRouter.get('/trips',async (req, res) => {
   try {
   
-    const trips = await Trip.find().populate('createdBy', 'username'); 
+    const trips = await Trip.find(); 
     
     res.status(200).json(trips);
   } catch (error) {
