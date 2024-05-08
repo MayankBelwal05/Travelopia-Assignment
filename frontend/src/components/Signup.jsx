@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Container, Grid, Link } from '@mui/material';
 import signup from '../assets/bg.jpg';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
+  const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
-    name: '',
+    username: '', 
     email: '',
-    phoneNumber: '',
     password: ''
   });
 
@@ -15,12 +19,24 @@ const SignUp = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    console.log(formData);
-  };
 
+    try { 
+      const response = await axios.post(`http://localhost:5000/users/register`, formData);
+      console.log(response.data);
+      toast("User Registered Sucesfully");
+      
+      setTimeout(()=>{
+        navigate("/login");
+
+      },1000)
+      
+    } catch (error) {
+      console.error('Error registering user:', error.response.data);
+      toast("'Error registering user:'");
+    }
+  };
   return (
     <div style={{ backgroundImage: `url(${signup})`, backgroundSize: 'cover', minHeight: '673px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Container component="main" maxWidth="sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.7)', padding: '20px', borderRadius: '10px', backdropFilter: 'blur(10px)' }}>
@@ -31,8 +47,8 @@ const SignUp = () => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                label="Name"
-                name="name"
+                label="username"
+                name="username"
                 value={formData.name}
                 onChange={handleChange}
                 fullWidth
@@ -45,17 +61,6 @@ const SignUp = () => {
                 name="email"
                 type="email"
                 value={formData.email}
-                onChange={handleChange}
-                fullWidth
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Phone Number"
-                name="phoneNumber"
-                type="tel"
-                value={formData.phoneNumber}
                 onChange={handleChange}
                 fullWidth
                 required
@@ -85,6 +90,7 @@ const SignUp = () => {
           </Grid>
         </Grid>
       </Container>
+      <ToastContainer />
     </div>
   );
 };

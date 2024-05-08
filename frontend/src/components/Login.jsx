@@ -3,6 +3,8 @@ import { TextField, Button, Typography, Container, Grid, Link } from '@mui/mater
 import signup from '../assets/bg.jpg';
 
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -36,14 +38,18 @@ const Login = () => {
 
 
       if (userData) {
-        alert("login sucessfull")
-        navigate("/");
+        toast("login Sucessfull");
+        setTimeout(()=>{
+          navigate("/");
+
+        },1000)
       } else {
         alert("failed login")
       }
 
     } catch (error) {
       console.error('Error logging in:', error);
+      toast('Error logging in:PleaseTry Again')
     }
   };
 
@@ -97,6 +103,7 @@ const Login = () => {
           </Grid>
         </Grid>
       </Container>
+      <ToastContainer />
     </div>
   );
 };

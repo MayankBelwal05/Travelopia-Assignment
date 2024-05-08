@@ -11,12 +11,11 @@ const AdminDashboard = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   React.useEffect(() => {
-    // Fetch trips data from the backend API
     const fetchTrips = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/trips');
         console.log(response.data);
-        // Add unique ids to each row
+       
         const tripsWithIds = response.data.map((trip, index) => ({
           ...trip,
           id: index + 1,
@@ -36,7 +35,7 @@ const AdminDashboard = () => {
     { field: 'interest', headerName: 'Interest', width: 200, headerClassName: 'table-header', cellClassName: 'table-cell' },
     { field: 'numberOfTravelers', headerName: 'Travelers', type: 'number', width: 150, headerClassName: 'table-header', cellClassName: 'table-cell' },
     { field: 'budgetPerPerson', headerName: 'Budget', width: 150, headerClassName: 'table-header', cellClassName: 'table-cell' },
-    { field: 'createdBy', headerName: 'Created By', width: 200, headerClassName: 'table-header', cellClassName: 'table-cell' }, // Add this field
+    { field: 'createdBy', headerName: 'Created By', width: 200, headerClassName: 'table-header', cellClassName: 'table-cell' }, 
     {
       field: 'actions',
       headerName: 'Actions',

@@ -19,8 +19,9 @@ const AdminLogin = () => {
     e.preventDefault();
   
     if (formData.email === 'admin@gmail.com' && formData.password === 'admin123') {
-   
-      navigate('/admindashboard');
+      setTimeout(()=>{
+        navigate('/admindashboard');
+      },1000)
     } else {
       
       console.log('Invalid credentials');
