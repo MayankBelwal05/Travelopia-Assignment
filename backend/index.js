@@ -2,7 +2,6 @@ const express = require("express");
 const { connection } = require("./config/db");
 const { userRouter } = require("./routes/userRouters");
 const cors = require("cors");
-const { UserModule } = require("./model/userModel");
 const { tripRouter } = require("./routes/TripRouters");
 require("dotenv").config();
 const app = express();
@@ -13,9 +12,8 @@ app.use("/users", userRouter);
 app.use("/api", tripRouter);
 
 
-app.get("/", async (req, res) => {
-  const user = await UserModule.find();
-  res.send(user);
+app.use("/", async (req, res) => {
+  res.send("Server is running");
 });
 
 app.listen(process.env.port, async () => {
