@@ -1,0 +1,54 @@
+.dashboard-container {
+    background-color: lightblue;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  .dashboard-heading {
+    font-weight: 600px;
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
+  
+  .table-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid black;
+  }
+  
+  .custom-data-grid {
+    
+    width: 100%;
+  }
+  
+  .table-cell {
+    text-align: center;
+    border: 2px solid black;
+  }
+  
+  .table-header {
+    font-weight: 600px;
+  }
+  
+  .modal-container {
+    margin-top: 3rem;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .modal-card {
+    background-color: lightblue;
+  }
+  
+  .modal-heading {
+    font-weight: 600px;
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  
+  .modal-content {
+    font-size: 20px;
+  }
+  
