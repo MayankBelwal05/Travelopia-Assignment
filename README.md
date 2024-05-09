@@ -13,11 +13,11 @@ Travelopia is a platform dedicated to providing unique travel experiences curate
 - [Credentials](#credentials)
 
 ## Technology Stack  ✍️
-Frontend:
+## Frontend:
 - React: A JavaScript library for building user interfaces.
 - Material UI:Alibrary used to build navbar,login and signup cpmponent
 - Vercel: For deploying the frontend part of the project
-Backend:
+## Backend:
 - Node.js: A JavaScript runtime for building server-side applications.
 - MongoDB: A NoSQL database for storing and managing travel data.
 - Express.js: A web application framework for Node.js, used for building RESTful APIs.
