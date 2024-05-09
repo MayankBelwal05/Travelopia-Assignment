@@ -84,19 +84,25 @@ Password: admin123
 
 ## Video Walkthrough of the project
 
+https://github.com/MayankBelwal05/Travelopia-Assignment/assets/147751671/41964f6e-1625-4487-8e9c-e94161c2f628
+
+
 ## Design
 ## Homepage
-![1t](https://github.com/MayankBelwal05/Travelopia-Assignment/assets/147751671/7bdbbc9a-a40c-4b32-bf65-74b9a9c7ba8e)
+![1t](https://github.com/MayankBelwal05/Travelopia-Assignment/assets/147751671/933df00d-a270-4967-88fe-456f9cb44456)
+
 
 ## LoginPage
-![2t](https://github.com/MayankBelwal05/Travelopia-Assignment/assets/147751671/384795c6-968e-408f-8ea7-bde10e338145)
+![2t](https://github.com/MayankBelwal05/Travelopia-Assignment/assets/147751671/7ce8e6b7-2293-4d04-bd72-b3ee7870bfb8)
+
+## SignUp Page
+![25t](https://github.com/MayankBelwal05/Travelopia-Assignment/assets/147751671/d9332c42-9a2a-41e9-b45d-e14576902e09)
 
 ## Admin Login Page
-![3t](https://github.com/MayankBelwal05/Travelopia-Assignment/assets/147751671/cda8a0ee-4ba7-4670-b3da-7e289147061c)
+![3t](https://github.com/MayankBelwal05/Travelopia-Assignment/assets/147751671/ef52dc9a-ce81-4b50-9c65-6605c0a5579c)
 
 ## Admin Dashboard
-![4t](https://github.com/MayankBelwal05/Travelopia-Assignment/assets/147751671/a3bfad87-3713-4968-bea9-36268f4996f9)
-
+![4t](https://github.com/MayankBelwal05/Travelopia-Assignment/assets/147751671/77dc0358-a7a7-4048-8424-db5cf5e962d7)
 
 
 ## Installation & Getting Started
