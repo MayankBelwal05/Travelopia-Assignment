@@ -33,7 +33,7 @@ Travelopia/
 │  ├─ config/
 │  │  └─ db.js
 │  ├─ controller/
-│  │  └─ usercontroller.js.js
+│  │  └─ usercontroller.js
 │  ├─ middleware/
 │  │  └─ auth.middleware.js
 │  ├─ model/
@@ -47,8 +47,7 @@ Travelopia/
 └─ frontend/
    ├─ src/
    │  ├─ public/
-   │  ├─ src/
-   |  │  ├─ assets/
+   │  ├─ assets/
    │  │  └─ img/
    │  ├─ Components/
    │  │  ├─ AdminDashboard.jsx
@@ -66,6 +65,7 @@ Travelopia/
    │  ├─ themejsx
    │  ├─ api.js
    │  └─ index.html
+
 
 ## Features
 - Travel Planning: Explore and plan unique travel experiences tailored by experts.
