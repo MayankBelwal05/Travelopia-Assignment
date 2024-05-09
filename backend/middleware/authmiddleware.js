@@ -14,10 +14,10 @@ const auth = async (req, res, next) => {
       console.log(req)
       next();
     } else {
-      res.send({ msg: "you are not authorized " });
+      res.send({ msg: "you are not authorized 1" });
     }
   } else {
-    res.send({ msg: "you are not authorized " });
+    res.send({ msg: "you are not authorized 2" });
   }
 };
 module.exports = { auth };
