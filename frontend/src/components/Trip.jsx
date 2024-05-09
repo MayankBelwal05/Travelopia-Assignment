@@ -31,8 +31,8 @@ const TripForm = () => {
       return;
     }
     try {
-      const response = await axios.post(`http://localhost:5000/api/trips`, formData, {
-      // const response = await axios.post(`https://travelopia-assignment.onrender.com/api/trips`, formData, {
+      // const response = await axios.post(`http://localhost:5000/api/trips`, formData, {
+      const response = await axios.post(`https://travelopia-assignment.onrender.com/api/trips`, formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }

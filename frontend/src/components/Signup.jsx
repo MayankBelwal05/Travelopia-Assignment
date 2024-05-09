@@ -25,8 +25,8 @@ const SignUp = () => {
     setLoading(true); 
 
     try { 
-      const response = await axios.post(`http://localhost:5000/users/register`, formData);
-      // const response = await axios.post(`https://travelopia-assignment.onrender.com/users/register`, formData);
+      // const response = await axios.post(`http://localhost:5000/users/register`, formData);
+      const response = await axios.post(`https://travelopia-assignment.onrender.com/users/register`, formData);
       console.log(response.data);
       toast("User Registered Successfully");
       

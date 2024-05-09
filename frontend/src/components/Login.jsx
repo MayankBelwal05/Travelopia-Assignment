@@ -21,8 +21,8 @@ const Login = () => {
     e.preventDefault();
     setLoading(true); 
     try {
-      const response = await fetch('http://localhost:5000/users/login', {
-      // const response = await fetch('https://travelopia-assignment.onrender.com/users/login', {
+      // const response = await fetch('http://localhost:5000/users/login', {
+      const response = await fetch('https://travelopia-assignment.onrender.com/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,21 +30,24 @@ const Login = () => {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
-        throw new Error('Login failed');
-      }
-      const userData = await response.json();
-      console.log(userData); 
-      localStorage.setItem('token', userData.token);
-      localStorage.setItem('user', JSON.stringify({ name: userData.user }));
-
-      if (userData) {
-        toast("Login Successful");
-        setTimeout(() => {
-          navigate("/");
-        }, 1000);
-      } else {
-        alert("Failed login")
+      if (response.ok) {
+      
+        const userData = await response.json();
+        console.log(userData); 
+        localStorage.setItem('token', userData.token);
+        localStorage.setItem('user', JSON.stringify({ name: userData.user }));
+        
+        if (userData) {
+          toast("Login Successful");
+          setTimeout(() => {
+            navigate("/");
+          }, 1000);
+        } else {
+          toast("Failed login")
+        }
+      }else{
+        toast("Invalid login credentials")
+        return
       }
 
     } catch (error) {
