@@ -1,11 +1,12 @@
-# Travelopia 🔔
+# Travelopia 🌎
 
-## Introduction
+
+## Introduction 🔔
 Travelopia is a platform dedicated to providing unique travel experiences curated by travel experts. From wildlife encounters to polar expeditions, and from cultural tours to yachting adventures, Travelopia offers a diverse range of travel opportunities designed to offer new perspectives on the world.
 
 ## Content
-- [Technology Stack](#Technology-Stack)
-- [Deployed App](#deployed-app)
+- [Technology Stack](Technology-Stack)
+- [Deployed App](https://travelopia-beige.vercel.app/)
 - [Directory Structure](#directory-structure)
 - [Features](#features)
 - [Installation & Getting Started](#installation--getting-started)
@@ -25,9 +26,11 @@ Travelopia is a platform dedicated to providing unique travel experiences curate
 
 ## Deployed App 🖊️
 Frontend: [https://travelopia-beige.vercel.app/]
+
 Backend: [https://travelopia-assignment.onrender.com/]
 
 ## Directory Structure
+```
 Travelopia/
 ├─ backend/
 │  ├─ config/
@@ -65,7 +68,7 @@ Travelopia/
    │  ├─ themejsx
    │  ├─ api.js
    │  └─ index.html
-
+```
 
 ## Features
 - Travel Planning: Explore and plan unique travel experiences tailored by experts.
@@ -96,7 +99,7 @@ Password: admin123
 ## Installation & Getting Started
 
 To run the project locally, follow these steps:
-
+```
 ## Install the Project
 git clone https://github.com/MayankBelwal05/Travelopia-Assignment.git
 
@@ -109,7 +112,7 @@ npm run dev
 cd backend
 npm install
 npm run server
-
+```
 
 ## Design Decisions or Assumptions
 Use of a modern and minimalist design for enhanced user experience.
