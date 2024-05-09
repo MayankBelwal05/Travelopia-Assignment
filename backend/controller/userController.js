@@ -31,24 +31,28 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await UserModule.findOne({ email });
-    // console.log(">>>>",user)
+    if (!user) {
+      return res.status(404).send({ msg: "User not found" });
+    }
+
     bcrypt.compare(password, user.password, (err, result) => {
       if (result) {
         const token = jwt.sign(
           { userId: user._id, authors: user.username },
           "masai"
         );
-        res.send({ msg: "Login successful", token: token ,user:user.username});
-        console.log(user.username)
+        res.status(200).send({ msg: "Login successful", token: token, user: user.username });
+        console.log(user.username);
       } else {
-        res.send({ msg: err });
+        res.status(401).send({ msg: "Invalid password" });
       }
     });
   } catch (error) {
     console.log(`Error at Login ${error}`);
-    res.send({ msg: `Error at Login ${error}` });
+    res.status(500).send({ msg: `Error at Login ${error}` });
   }
 };
+
 
 const logoutUser = async (req, res) => {
   const blackListToken = req.headers.authorization?.split(" ")[1];
