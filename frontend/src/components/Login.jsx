@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { TextField, Button, Typography, Container, Grid, Link } from '@mui/material';
-import signup from '../assets/bg.jpg';
-
+import React, { useState } from 'react';
+import { TextField, Button, Typography, Container, Grid, Link, CircularProgress } from '@mui/material';
+import signup from '../assets/b2.webp';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,6 +11,7 @@ const Login = () => {
     email: '',
     password: ''
   });
+  const [loading, setLoading] = useState(false); 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,6 +19,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); 
     try {
       const response = await fetch('https://travelopia-assignment.onrender.com/users/login', {
         method: 'POST',
@@ -36,20 +37,20 @@ const Login = () => {
       localStorage.setItem('token', userData.token);
       localStorage.setItem('user', JSON.stringify({ name: userData.user }));
 
-
       if (userData) {
-        toast("login Sucessfull");
-        setTimeout(()=>{
+        toast("Login Successful");
+        setTimeout(() => {
           navigate("/");
-
-        },1000)
+        }, 1000);
       } else {
-        alert("failed login")
+        alert("Failed login")
       }
 
     } catch (error) {
       console.error('Error logging in:', error);
-      toast('Error logging in:PleaseTry Again')
+      toast('Error logging in: Please Try Again');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -84,8 +85,8 @@ const Login = () => {
               />
             </Grid>
           </Grid>
-          <Button type="submit" variant="contained" color="primary" fullWidth style={{ marginTop: '2rem' }}>
-            Log In
+          <Button type="submit" variant="contained" color="primary" fullWidth style={{ marginTop: '2rem' }} disabled={loading}>
+            {loading ? <CircularProgress size={24} color="inherit" /> : 'Log In'}
           </Button>
         </form>
         <Grid container justifyContent="center" style={{ marginTop: '1rem' }}>

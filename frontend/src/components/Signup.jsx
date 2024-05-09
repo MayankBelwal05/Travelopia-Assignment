@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Container, Grid, Link } from '@mui/material';
+import { TextField, Button, Typography, Container, Grid, Link, CircularProgress } from '@mui/material';
 import signup from '../assets/bg.jpg';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,7 @@ const SignUp = () => {
     email: '',
     password: ''
   });
+  const [loading, setLoading] = useState(false); 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,22 +22,25 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); 
 
     try { 
       const response = await axios.post(`https://travelopia-assignment.onrender.com/users/register`, formData);
       console.log(response.data);
-      toast("User Registered Sucesfully");
+      toast("User Registered Successfully");
       
-      setTimeout(()=>{
+      setTimeout(() => {
         navigate("/login");
-
-      },1000)
+      }, 1000);
       
     } catch (error) {
       console.error('Error registering user:', error.response.data);
-      toast("'Error registering user:'");
+      toast("Error registering user. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
+
   return (
     <div style={{ backgroundImage: `url(${signup})`, backgroundSize: 'cover', minHeight: '673px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Container component="main" maxWidth="sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.7)', padding: '20px', borderRadius: '10px', backdropFilter: 'blur(10px)' }}>
@@ -78,8 +82,8 @@ const SignUp = () => {
               />
             </Grid>
           </Grid>
-          <Button type="submit" variant="contained" color="primary" fullWidth style={{ marginTop: '2rem' }}>
-            Sign Up
+          <Button type="submit" variant="contained" color="primary" fullWidth style={{ marginTop: '2rem' }} disabled={loading}>
+            {loading ? <CircularProgress size={24} color="inherit" /> : 'Sign Up'}
           </Button>
         </form>
         <Grid container justifyContent="center" style={{ marginTop: '1rem' }}>

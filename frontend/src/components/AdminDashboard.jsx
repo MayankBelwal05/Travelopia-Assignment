@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Container, Typography, Card, CardContent, Modal } from '@mui/material';
+import { Container, Typography, Card, CardContent, Modal, CircularProgress } from '@mui/material';
 import axios from 'axios';
 
 import './AdminDashboard.css';
@@ -9,6 +9,7 @@ const AdminDashboard = () => {
   const [trips, setTrips] = React.useState([]);
   const [selectedApplication, setSelectedApplication] = React.useState(null);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(true); 
 
   React.useEffect(() => {
     const fetchTrips = async () => {
@@ -23,6 +24,8 @@ const AdminDashboard = () => {
         setTrips(tripsWithIds);
       } catch (error) {
         console.error('Error fetching trips:', error);
+      } finally {
+        setLoading(false); 
       }
     };
 
@@ -67,14 +70,20 @@ const AdminDashboard = () => {
         🚀 Travel Applications Dashboard 🌍
       </Typography>
       <div className="table-container">
-        <DataGrid
-          rows={trips}
-          columns={columns}
-          getRowId={getRowId}
-          autoHeight
-          hideFooterPagination
-          className="custom-data-grid"
-        />
+        {loading ? (
+          <div className="preloader-container">
+            <CircularProgress size={48} />
+          </div>
+        ) : (
+          <DataGrid
+            rows={trips}
+            columns={columns}
+            getRowId={getRowId}
+            autoHeight
+            hideFooterPagination
+            className="custom-data-grid"
+          />
+        )}
       </div>
       <Modal open={isModalOpen} onClose={handleCloseModal}>
         <Container maxWidth="sm" className="modal-container">

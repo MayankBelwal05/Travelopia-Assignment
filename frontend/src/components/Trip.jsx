@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { Button, FormControl, InputLabel, Select, MenuItem, Stack, Alert } from '@mui/material';
 import { FaMountain, FaUmbrellaBeach, FaLandmark, FaTree, FaHippo, FaWineBottle } from 'react-icons/fa';
 import background from '../assets/main.webp';
 import axios from 'axios';
@@ -14,6 +14,8 @@ const TripForm = () => {
     budgetPerPerson: ''
     // createdBy: '' 
   });
+  const [tripCreated, setTripCreated] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,22 +23,30 @@ const TripForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); 
     const token = localStorage.getItem('token');
-    if(!token){
+    if (!token) {
       toast("Please Login first!");
-        return
-      }
-      try {
+      setLoading(false); 
+      return;
+    }
+    try {
       const response = await axios.post(`https://travelopia-assignment.onrender.com/api/trips`, formData, {
         headers: {
-          Authorization: `Bearer ${token}` 
+          Authorization: `Bearer ${token}`
         }
       });
-      
+
       console.log(response.data);
-      console.log("trip created sucessfully");
+      console.log("trip created successfully");
+      // alert("trip created successfully");
+      toast("Trip created successfully!");
+      setTripCreated(true);
+      setLoading(false); 
+
     } catch (error) {
       console.error('Error creating trip:', error.message);
+      setLoading(false); 
     }
   };
 
@@ -146,11 +156,18 @@ const TripForm = () => {
               <MenuItem value="$10000+">$10000+</MenuItem>
             </Select>
           </FormControl>
-          <Button type="submit" variant="contained" color="secondary" style={{ width: '100%', padding: '10px 0', backgroundColor: 'red' }}>
-            Create My Trip Now
+          <Button type="submit" variant="contained" color="secondary" style={{ width: '100%', padding: '10px 0', backgroundColor: 'red' }} disabled={loading}>
+            {loading ? 'Loading...' : 'Create My Trip Now'}
           </Button>
 
         </form>
+        {/* {tripCreated && (
+          <Stack sx={{ width: '100%' }} spacing={2}>
+            <Alert variant="filled" severity="success">
+              Trip created successfully
+            </Alert>
+          </Stack>
+        )} */}
       </div>
       <ToastContainer />
     </div>

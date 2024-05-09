@@ -11,6 +11,7 @@ const auth = async (req, res, next) => {
 
       // console.log(req.body.userId)
       console.log(req.id)
+      console.log(req)
       next();
     } else {
       res.send({ msg: "you are not authorized " });

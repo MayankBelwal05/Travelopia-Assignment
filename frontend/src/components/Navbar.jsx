@@ -101,9 +101,10 @@ function DrawerAppBar(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex'}}>
       <CssBaseline />
-      <AppBar component="nav" sx={{ minHeight: '80px' }}> 
+      {/* <AppBar component="nav" sx={{ minHeight: '80px' }}>  */}
+      <AppBar component="nav" sx={{ minHeight: '80px', backgroundColor: 'black' }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -115,18 +116,19 @@ function DrawerAppBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-              T  R  A  V  E  L  O  P  I  A   💡
-            </Link>
-          </Typography>
+  variant="h6"
+  component="div"
+  sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, marginLeft: '50px' }}
+>
+  <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+  🏔️  T  R  A  V  E  L  O  P  I  A   
+  </Link>
+</Typography>
+
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {isLoggedIn ? (
               <div style={{display:'flex',gap:"20px",alignItems:'center'}}>
-                <Typography variant="h6" sx={{ color: '#fff' }}>{username}</Typography>
+                <Typography variant="h6" sx={{ color: '#fff' }}>Hello  👋  {username}</Typography>
                 <Button onClick={handleLogout} sx={{
                     color: '#fff',
                     textDecoration: 'none',
@@ -147,7 +149,7 @@ function DrawerAppBar(props) {
                     borderRadius: '5px',
                   }}
                 >
-                  Login/SignUp
+                  Login
                 </Button>
                 <Button
                   component={Link}
@@ -183,7 +185,7 @@ function DrawerAppBar(props) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: 3, marginTop: 0 }}>
+      <Box component="main" sx={{ p: 0, marginTop: 0 }}>
         <Toolbar />
       </Box>
       <ToastContainer />
