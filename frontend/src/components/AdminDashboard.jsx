@@ -33,16 +33,16 @@ const AdminDashboard = () => {
   }, []);
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 150, headerClassName: 'table-header', cellClassName: 'table-cell' },
-    { field: 'location', headerName: 'Location', width: 200, headerClassName: 'table-header', cellClassName: 'table-cell' },
-    { field: 'interest', headerName: 'Interest', width: 200, headerClassName: 'table-header', cellClassName: 'table-cell' },
-    { field: 'numberOfTravelers', headerName: 'Travelers', type: 'number', width: 150, headerClassName: 'table-header', cellClassName: 'table-cell' },
-    { field: 'budgetPerPerson', headerName: 'Budget', width: 150, headerClassName: 'table-header', cellClassName: 'table-cell' },
-    { field: 'username', headerName: 'Created By', width: 200, headerClassName: 'table-header', cellClassName: 'table-cell' }, 
+    { field: 'id', headerName: 'ID', width: 70, headerClassName: 'table-header', cellClassName: 'table-cell' },
+    { field: 'location', headerName: 'Location', width: 190, headerClassName: 'table-header', cellClassName: 'table-cell' },
+    { field: 'interest', headerName: 'Interest', width: 220, headerClassName: 'table-header', cellClassName: 'table-cell' },
+    { field: 'numberOfTravelers', headerName: 'Travelers', type: 'number', width: 100, headerClassName: 'table-header', cellClassName: 'table-cell' },
+    { field: 'budgetPerPerson', headerName: 'Budget', width: 190, headerClassName: 'table-header', cellClassName: 'table-cell' },
+    { field: 'username', headerName: 'Created By', width: 190, headerClassName: 'table-header', cellClassName: 'table-cell' }, 
     {
       field: 'actions',
       headerName: 'Actions',
-      width: 200,
+      width: 190,
       renderCell: (params) => (
         <strong>
           <button onClick={() => handleViewApplication(params.row)}>View</button>
@@ -65,7 +65,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <Container className="dashboard-container">
+    <Container className="dashboard-container" style={{ marginTop: '40px' }}>
       <Typography variant="h4" gutterBottom className="dashboard-heading">
         🚀 Travel Applications Dashboard 🌍
       </Typography>
@@ -88,24 +88,25 @@ const AdminDashboard = () => {
       <Modal open={isModalOpen} onClose={handleCloseModal}>
         <Container maxWidth="sm" className="modal-container">
           {selectedApplication && (
-            <Card className="modal-card">
-              <CardContent>
-                <Typography variant="h5" component="h2" className="modal-heading">
-                  Application Details 📝
-                </Typography>
-                <Typography variant="body2" component="p" className="modal-content">
-                  <strong>Location:</strong> {selectedApplication.location}
-                  <br />
-                  <strong>Interest:</strong> {selectedApplication.interest}
-                  <br />
-                  <strong>Travelers:</strong> {selectedApplication.numberOfTravelers}
-                  <br />
-                  <strong>Budget:</strong> {selectedApplication.budgetPerPerson}
-                  <br />
-                  <strong>Created By:</strong> {selectedApplication.username} 
-                </Typography>
-              </CardContent>
-            </Card>
+            <Card className="modal-card" style={{ backgroundColor: 'lightblue' }}>
+            <CardContent>
+              <Typography variant="h5" component="h2" className="modal-heading">
+                Application Details 📝
+              </Typography>
+              <Typography variant="body2" component="p" className="modal-content">
+                <strong>Location:</strong> {selectedApplication.location}
+                <br />
+                <strong>Interest:</strong> {selectedApplication.interest}
+                <br />
+                <strong>Travelers:</strong> {selectedApplication.numberOfTravelers}
+                <br />
+                <strong>Budget:</strong> {selectedApplication.budgetPerPerson}
+                <br />
+                <strong>Created By:</strong> {selectedApplication.username} 
+              </Typography>
+            </CardContent>
+          </Card>
+          
           )}
         </Container>
       </Modal>

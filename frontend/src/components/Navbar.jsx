@@ -128,7 +128,7 @@ function DrawerAppBar(props) {
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {isLoggedIn ? (
               <div style={{display:'flex',gap:"20px",alignItems:'center'}}>
-                <Typography variant="h6" sx={{ color: '#fff' }}>Hello  👋  {username}</Typography>
+                <Typography variant="h6" sx={{ color: '#fff' }}>Hello  👋 {username}</Typography>
                 <Button onClick={handleLogout} sx={{
                     color: '#fff',
                     textDecoration: 'none',

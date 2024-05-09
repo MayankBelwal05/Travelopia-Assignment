@@ -1,54 +1,54 @@
 .dashboard-container {
-    background-color: lightblue;
-    padding: 20px;
-    min-height: 100vh;
-  }
+  background-color: rgb(91, 207, 253);
+  padding: 20px;
+  min-height: 100vh;
+  border-radius: 40px;
+  width: 100%;
+}
+
+.dashboard-heading {
+  font-weight: 600px;
+  margin-bottom: 10px;
+  font-size: 28px;
+  text-align: center;
+}
+
+.table-container {
+  background-color: white;
+  border-radius: 40px;
+  padding: 20px;
+  border: 2px solid black;
+}
+
+.custom-data-grid {
+  width: 100%;
+  height: 400px; 
   
-  .dashboard-heading {
-    font-weight: 600px;
-    margin-bottom: 10px;
-    font-size: 32px;
-  }
-  
-  .table-container {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    border: 2px solid black;
-  }
-  
-  .custom-data-grid {
-    
-    width: 100%;
-  }
-  
-  .table-cell {
-    text-align: center;
-    border: 2px solid black;
-  }
-  
-  .table-header {
-    font-weight: 600px;
-  }
-  
-  .modal-container {
-    margin-top: 2rem;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  .modal-card {
-    background-color: lightblue;
-  }
-  
-  .modal-heading {
-    font-weight: 600px;
-    margin-bottom: 10px;
-    font-size: 24px;
-  }
-  
-  .modal-content {
-    font-size: 20px;
-  }
-  
+}
+
+.table-cell {
+  text-align: center;
+  border: 1px solid grey;
+}
+
+.table-header {
+  font-weight: 600px;
+}
+
+.modal-container {
+  margin-top: 2rem;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 30px;
+}
+
+
+.modal-heading {
+  font-weight: 600px;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.modal-content {
+  font-size: 24px;
+}

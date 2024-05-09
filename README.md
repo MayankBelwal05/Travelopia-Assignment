@@ -74,6 +74,14 @@ Travelopia/
 - Travel Planning: Explore and plan unique travel experiences tailored by experts.
 - Admin Panel: Access an admin panel for managing trips and user accounts.
 - Planned Trips: Browse and discover planned trips with detailed itineraries.
+
+## Credentials
+Provided credentials for authenticated pages:
+
+User & Admin Login: admin@gmail.com
+
+Password: admin123
+
 ## Video Walkthrough of the project
 
 ## Design
@@ -89,11 +97,6 @@ Travelopia/
 ## Admin Dashboard
 ![4t](https://github.com/MayankBelwal05/Travelopia-Assignment/assets/147751671/a3bfad87-3713-4968-bea9-36268f4996f9)
 
-## Credentials
-Provided credentials for authenticated pages:
-
-User & Admin Login: admin@gmail.com
-Password: admin123
 
 
 ## Installation & Getting Started
