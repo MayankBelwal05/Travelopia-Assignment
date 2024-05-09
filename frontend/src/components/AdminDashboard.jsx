@@ -14,10 +14,10 @@ const AdminDashboard = () => {
   React.useEffect(() => {
     const fetchTrips = async () => {
       try {
-        const response = await axios.get('https://travelopia-assignment.onrender.com/api/trips');
+        const response = await axios.get('http://localhost:5000/api/trips');
         console.log(response.data);
        
-        const tripsWithIds = response.data.map((trip, index) => ({
+        const tripsWithIds = response.data.trips.map((trip, index) => ({
           ...trip,
           id: index + 1,
         }));
@@ -38,7 +38,7 @@ const AdminDashboard = () => {
     { field: 'interest', headerName: 'Interest', width: 200, headerClassName: 'table-header', cellClassName: 'table-cell' },
     { field: 'numberOfTravelers', headerName: 'Travelers', type: 'number', width: 150, headerClassName: 'table-header', cellClassName: 'table-cell' },
     { field: 'budgetPerPerson', headerName: 'Budget', width: 150, headerClassName: 'table-header', cellClassName: 'table-cell' },
-    { field: 'createdBy', headerName: 'Created By', width: 200, headerClassName: 'table-header', cellClassName: 'table-cell' }, 
+    { field: 'username', headerName: 'Created By', width: 200, headerClassName: 'table-header', cellClassName: 'table-cell' }, 
     {
       field: 'actions',
       headerName: 'Actions',
@@ -102,7 +102,7 @@ const AdminDashboard = () => {
                   <br />
                   <strong>Budget:</strong> {selectedApplication.budgetPerPerson}
                   <br />
-                  <strong>Created By:</strong> {selectedApplication.createdBy} 
+                  <strong>Created By:</strong> {selectedApplication.username} 
                 </Typography>
               </CardContent>
             </Card>

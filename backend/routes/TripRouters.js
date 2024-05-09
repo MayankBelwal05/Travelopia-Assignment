@@ -1,6 +1,7 @@
 const express = require("express");
 const { Trip } = require("../model/tripModel");
 const { auth } = require("../middleware/authmiddleware");
+const { UserModule } = require("../model/userModel");
 // const { access } = require("../middleware/access.middleware");
 const tripRouter = express.Router(); 
 tripRouter.use(express.json());
@@ -30,18 +31,32 @@ tripRouter.post('/trips',auth,async (req, res) => {
     }
   });
 
+  tripRouter.get("/trips",async (req, res) => {
+    try {
+      const trips = await Trip.find();
+      const tripsWithUsername = await Promise.all(trips.map(async (trip) => {
+        const user = await UserModule.findById(trip.createdBy);
+        const username = user ? user.username : 'Unknown'; 
+        return { ...trip.toObject(), username }; 
+      }));
+      res.status(200).json({ trips: tripsWithUsername });
+    } catch (e) {     
+      res.status(400).json({ e });
+    }
+  });
 
-  tripRouter.get('/trips',async (req, res) => {
-  try {
+
+//   tripRouter.get('/trips',async (req, res) => {
+//   try {
   
-    const trips = await Trip.find(); 
+//     const trips = await Trip.find(); 
     
-    res.status(200).json(trips);
-  } catch (error) {
-    console.error('Error fetching trips:', error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
+//     res.status(200).json(trips);
+//   } catch (error) {
+//     console.error('Error fetching trips:', error);
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// });
 
 module.exports = { tripRouter };
 
